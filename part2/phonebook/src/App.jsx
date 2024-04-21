@@ -40,12 +40,18 @@ const App = () => {
     }
 
     personService.create({name: newName, number:newNumber})
-    .then(returnedPerson => {
+    .then(response => {
+      const returnedPerson = response.data
       setPersons(persons.concat(returnedPerson))
       setSuccessMessage(`Added ${returnedPerson.name} sucessfully`)
       setTimeout(() => {
         setSuccessMessage(null)
       }, 5000)
+    }).catch(err => {
+      setErrorMessage(err.response.data.error)
+        setTimeout(() => {
+          setErrorMessage(null)
+        }, 5000)
     })
   }
 
