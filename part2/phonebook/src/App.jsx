@@ -31,7 +31,7 @@ const App = () => {
         }, 5000)
       })
       .catch(err => {
-        setErrorMessage(`User ${newPerson.name} already deleted on the server`)
+        setErrorMessage(err.response.data.error)
         setTimeout(() => {
           setErrorMessage(null)
         }, 5000)
