@@ -19,20 +19,20 @@ const entrySchema = new mongoose.Schema({
 
 const Entry = mongoose.model('Entry', entrySchema)
 
-if (process.argv.length == 3) {
-    Entry.find({}).then(res => {
-        res.forEach(entry => console.log(`${entry.name} ${entry.number}`))
-        mongoose.connection.close()
-    })
+if (process.argv.length === 3) {
+  Entry.find({}).then(res => {
+    res.forEach(entry => console.log(`${entry.name} ${entry.number}`))
+    mongoose.connection.close()
+  })
 }
 else if (process.argv.length >= 5) {
-    const entry = new Entry({
-        name: process.argv[3],
-        number: process.argv[4],
-    })
+  const entry = new Entry({
+    name: process.argv[3],
+    number: process.argv[4],
+  })
 
-    entry.save().then(res => {
-        console.log(`added ${entry.name} number ${entry.number} to phonebook`)
-        mongoose.connection.close()
-    })
+  entry.save().then(() => {
+    console.log(`added ${entry.name} number ${entry.number} to phonebook`)
+    mongoose.connection.close()
+  })
 }
