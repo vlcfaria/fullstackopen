@@ -3,20 +3,22 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "test": "node --test"
+    "start": "NODE_ENV=prod node index.js",
+    "dev": "NODE_ENV=dev nodemon index.js",
+    "test": "NODE_ENV=test node --test"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
     "dotenv": "^16.4.7",
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "supertest": "^7.0.0"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.1",
+    "express-async-errors": "^3.1.1",
     "lodash": "^4.17.21",
     "mongoose": "^8.8.3"
   }
